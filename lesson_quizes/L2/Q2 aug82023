@@ -1,0 +1,40 @@
+75%
+
+
+
+1) d  good
+
+
+2) a b c e f  good
+
+
+3) a   good
+
+
+4) d    good
+
+
+5) c 
+A is correct
+
+6) b c 
+C is incorrect
+
+
+7) a c e     good
+
+
+8) C        good
+
+
+9) c  
+D is correct. Passing a method to a function strips the context.
+
+
+10) a b c d     good
+
+
+11) a b c d 
+a and d are incorrect. 
+
+12) b d    good 
