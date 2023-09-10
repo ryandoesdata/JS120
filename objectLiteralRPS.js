@@ -1,36 +1,11 @@
-/*
-Textual description:
-A game where a player chooses between three options
-A computer chooses between three options
-An outcome is decided
-
-nouns and verbs:
-nouns: game, player, computer, human, choice, outcome, winner, loser, tie, 
-verbs: play, choose, compare, win, lose, tie.
-
-associate nouns and verbs:
-
-game: play, compare, win, lose, tie
-choice, outcome, winner, loser, tie
-
-
-player: choose
-human, computer
-
-outcome: compare, win, lose, tie
-
-write scaffolding and spike code:
-*/
-
 const readline = require("readline-sync");
 
-function ooRPS (humanChoice, computerChoice, again) {
-  return {
-    humanChoice,
-    computerChoice,
+let ooRPS = {
+    humanChoice: undefined,
+    computerChoice: undefined,
     validMoves: ["rock", "paper", "scissors"],
     yesOrNo: ["y", "n"],
-    again,
+    again: undefined,
 
     displayGame() { //logs an introduction to the game
       console.clear();
@@ -99,7 +74,5 @@ function ooRPS (humanChoice, computerChoice, again) {
       this.displayGoodbyeMessage();
     }
   }
-}
 
-let newGame = ooRPS();
-newGame.play();
+ooRPS.play();  

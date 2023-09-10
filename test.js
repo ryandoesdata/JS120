@@ -1,38 +1,78 @@
-function Person(name) {
-  this.name = name;
-  this.school = undefined;
-}
+const readline = require("readline-sync");
 
-Person.prototype.speak = function() {
-  return `Hello, my name is ${this.name}.`;
-};
+let ooRPS = {
+    humanChoice: undefined,
+    computerChoice: undefined,
+    validMoves: ["rock", "paper", "scissors"],
+    yesOrNo: ["y", "n"],
+    again: undefined,
 
-function Child(name, school) {
-  this.school = school;
-  Person.call(this, name);
-}
+    displayGame() { //logs an introduction to the game
+      console.clear();
+      console.log("Welcome to ooRPS!")
+    },
 
-Child.prototype = Object.assign(Person.prototype);
-Child.prototype.constructor = Child;
+    humanChoose() { //gives the player a choice
+      while(true) {
+        this.humanChoice = readline.question("Choose: rock, paper, scissors\n");
+        console.clear();
+        if  (!this.validMoves.includes(this.humanChoice)) {
+            console.log("That is not a valid choice.")
+          } else break;
+      }
+    },
 
-Child.prototype.learn = function() {
-  return "I'm going to school!";
-};
+    computerChoose() { //computer makes a choice
+      this.computerChoice = this.validMoves[Math.floor(Math.random() * 3)]
+      // console.log(`Computer chooses ${this.computerChoice}.`);
+    },
 
-let child = new Child("Suzy", "PS 33");
-console.log(child instanceof Child);                               // true
-console.log(child instanceof Person);               // true
-console.log(Object.getPrototypeOf(child) === Child.prototype);     // true
-console.log(Object.getPrototypeOf(child).constructor === Child);   // true
-console.log(child.school === "PS 33");                             // true
-console.log(child.learn() === "I'm going to school!");             // true
-console.log();
+    displayResults() {
+      console.log(`You chose ${this.humanChoice}.`);
+      console.log(`Computer chose ${this.computerChoice}.`);
+    },
 
-let person = new Person("Pete");
-console.log(person instanceof Child === false);                    // true
-console.log(person instanceof Person);                             // true
-console.log(Object.getPrototypeOf(person) === Person.prototype);   // true
-console.log(Object.getPrototypeOf(person).constructor === Person); // true
-console.log(person.school === undefined);                          // true
-console.log(person.speak() === "Hello, my name is Pete.");         // true 
-console.log(person.learn === undefined);                           // true
+    compare() { //compares computer and human choices to determine the outcome
+      if ((this.humanChoice === 'rock' && this.computerChoice === 'scissors') ||
+      (this.humanChoice === 'paper' && this.computerChoice === 'rock') ||
+      (this.humanChoice === 'scissors' && this.computerChoice === 'paper')) {
+    console.log('You win!');
+  } else if ((this.humanChoice === 'rock' && this.computerChoice === 'paper') ||
+             (this.humanChoice === 'paper' && this.computerChoice === 'scissors') ||
+             (this.humanChoice === 'scissors' && this.computerChoice === 'rock')) {
+    console.log('Computer wins!');
+  } else {
+    console.log("It's a tie");
+  }
+    },
+
+    playAgain() {
+      while(true) {
+      this.again = readline.question("Would you like to play this.again? Y or N\n");
+        if  (!this.yesOrNo.includes(this.again.toLowerCase())) {
+          console.clear();
+          console.log("That is not a valid choice.")
+        } else break; 
+      }
+        return this.again.toLowerCase() === "y";
+    },
+
+    displayGoodbyeMessage() {
+      console.clear();
+      console.log("Thanks for playing ooRPS! Goodbye");
+    },
+
+    play() { //initializes game
+      while (true) {
+        this.displayGame();
+        this.humanChoose();
+        this.computerChoose();
+        this.displayResults();
+        this.compare();
+        if (!this.playAgain()) break;
+      }
+      this.displayGoodbyeMessage();
+    }
+  }
+
+ooRPS.play();                  // true
