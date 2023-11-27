@@ -1,0 +1,44 @@
+64%
+
+c 
+good
+
+a b e f
+good
+
+e
+good
+
+b d c
+good
+
+b c e
+a c d e are correct
+
+b
+good
+
+a b e
+d is also correct
+
+a b c e
+good
+
+b d
+d is incorrect
+
+c d 
+d is incorrect
+
+a d 
+good
+
+a 
+c is also correct
+
+a c d 
+good
+
+c 
+good
+

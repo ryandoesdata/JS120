@@ -1,0 +1,26 @@
+// 67%
+
+// A, B, D
+// A is incorrect (instanceof obj ... obj needs a prototype property)
+
+// B good
+
+// B, C good
+// D good
+
+// C good
+
+// A, C, E
+// C is incorrect
+// (inheritance works for "is a" relationships.
+// mixins are for objects that need capabilities of other objects)
+
+// A, B, C good
+
+// D good
+
+// A, C 
+// B is correct
+// (object.assign with one argument returns a reference to that argument)
+// (inheritance requires a prototype to be a reference to a prototype,
+//   not a constructor)
